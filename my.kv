@@ -1,0 +1,211 @@
+<button>:
+    font_size: 18
+    color: 0.1,0.5,0.6,1
+    size_hint:1,0.1
+<label>:
+    font_size: 22
+    color: 0.1,0.5,0.6,1
+    size_hint: 1,0.1
+<Image>:
+    size_hint: 1,0.6
+
+<MainWindow>:
+    name: "main"
+    
+    bitin: bitin
+    mval: mval
+        
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Enter Bit Stream:" 
+            TextInput:
+                id: bitin 
+                mutliline: False
+            Label:
+                text: "Enter value of M:"
+            TextInput:
+                id: mval
+                mutliline: False
+        Button:
+            text: "Enter"
+            on_press:
+                root.btn()
+                app.root.current = "first"
+                root.manager.transition.direction = "left"
+                
+<FirstWindow>:
+    name: "first"
+    inbit: inbit
+    FloatLayout:
+        Label:
+            text: "INPUT_BIT"
+            pos_hint:{"top":1} 
+        Image:
+            id: inbit
+            pos_hint:{"top":0.9}
+            source: "input.png"
+            allow_stretch: True
+
+        Button:
+            text: "ShowImage"
+            pos_hint:{"y":0.2,"x":0}
+            on_release:
+                root.btn1()
+                
+        Button:
+            text: "Previous"
+            pos_hint:{"y":0.1,"x":0}
+            on_release:
+                app.root.current ="main"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Next"
+            pos_hint:{"x":0,"y":0}
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+
+
+<SecondWindow>:
+    name: "second"
+    modu: modu
+    FloatLayout:
+        Label:
+            text: "MODULATED_RESULTS"
+            pos_hint:{"top":1} 
+        Image:
+            id: modu
+            pos_hint:{"top":0.9}
+            source:
+                "modulated.png"
+            allow_stretch: True
+
+        Button:
+            text: "ShowImage"
+            pos_hint:{"y":0.2,"x":0}
+            on_release:
+                root.btn2()
+        
+        Button:
+            text: "Previous"
+            pos_hint:{"y":0.1,"x":0}
+            on_release:
+                app.root.current ="first"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Next"
+            pos_hint:{"x":0,"y":0}
+            on_release:
+                app.root.current = "third"
+                root.manager.transition.direction = "left"
+                    
+
+
+<ThirdWindow>:
+    name: "third"
+    demodu: demodu
+    FloatLayout:
+        Label:
+            text: "DEMODULATED_RESULTS"
+            pos_hint:{"top":1} 
+        Image:
+            id: demodu
+            pos_hint:{"top":0.9}
+            source:
+                "demodulated.png"
+            allow_stretch: True
+
+        Button:
+            text: "ShowImage"
+            pos_hint:{"y":0.2,"x":0}
+            on_release:
+                root.btn3()
+        Button:
+            text: "Previous"
+            pos_hint:{"y":0.1,"x":0}
+            on_release:
+                app.root.current ="second"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Next"
+            pos_hint:{"x":0,"y":0}
+            on_release:
+                app.root.current = "fourth"
+                root.manager.transition.direction = "left"
+
+<FourthWindow>:
+    name : "fourth"
+    cons: cons
+    FloatLayout:
+        Label:
+            text: "CONSTELLATION_DIAGRAM"
+            pos_hint:{"top":1} 
+        Image:
+            id: cons
+            pos_hint:{"top":0.9}
+            source:
+                "constellation.png"
+            allow_stretch: True
+        Button:
+            text: "ShowImage"
+            pos_hint:{"y":0.2,"x":0}
+            on_release:
+                root.btn4()
+        Button:
+            text: "Previous"
+            pos_hint:{"y":0.1,"x":0}
+            on_release:
+                app.root.current ="third"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Next"
+            pos_hint:{"x":0,"y":0}
+            on_release:
+                app.root.current = "fifth"
+                root.manager.transition.direction = "left"
+
+
+<FifthWindow>:
+    name: "fifth"
+    ffti: ffti
+    FloatLayout:
+        Label:
+            text: "FFT_PLOTS"
+            pos_hint:{"top":1} 
+        Image:
+            id: ffti
+            pos_hint:{"top":0.9}
+            source:
+                "fft.png"
+            allow_stretch: True
+        Button:
+            text: "ShowImage"
+            pos_hint:{"y":0.2,"x":0}
+            on_release:
+                root.btn5()
+        Button:
+            text: "Previous"
+            pos_hint:{"y":0.1,"x":0}
+            on_release:
+                app.root.current ="fourth"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Go To Main"
+            pos_hint:{"x":0,"y":0}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "left"
+            
+        
+        
+        
